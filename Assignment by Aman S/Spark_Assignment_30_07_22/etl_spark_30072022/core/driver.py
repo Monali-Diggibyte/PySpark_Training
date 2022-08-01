@@ -9,14 +9,18 @@ print(spark)
 """ 
 creating First DataFrame from  Employee_info.csv
 """
-empDF1 = spark.read.format("csv").options(header= True, inferSchema= True, sep= ",") \
-    .load("./Data Files/Employee_info.csv")
+print("Creating First Employee DataFrame:")
+empDF1 = spark.read.format("csv").options(header= True, inferSchema= True, delimiter= ",") \
+                   .load("./Data Files/Employee_info.csv")
+
+#empDF1 = createDF()
 empDF1.show(20, False)
 empDF1.printSchema()
 
 """ 
 creating Second DataFrame from  Employee_info_1.csv
 """
+print("Creating Second Employee DataFrame :")
 empDF2 = spark.read.format("csv").options(header= True, inferSchema= True, sep= ",") \
     .load("./Data Files/Employee_info_1.csv")
 empDF2.show(20, False)
@@ -25,7 +29,10 @@ empDF2.printSchema()
 """ 
 Joining above two dataFrames
 """
-empDF = empDF1.join(empDF2, "Id", "fullouter").orderBy(empDF1.Id)
+# empDF = empDF1.join(empDF2, "Id", "fullouter").orderBy(empDF1.Id)
+print("Joining 2 dataframes")
+empDF = getJoinDF(empDF1, empDF2)
+
 empDF.show()
 empDF.printSchema()
 
