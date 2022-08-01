@@ -54,10 +54,3 @@ empDF_n = getMeaningfulVal(empDF_n, 'City', 'Shrinagar')
 print("Updating Null by Meaningful Value for City:")
 empDF_n.show(20, False)
 
-"""
-from pyspark.sql.functions import regexp_replace
-empDF.withColumn('Department', regexp_replace('Department', 'Null', 'Other Dept')) \
-     .withColumn('City', regexp_replace('City', 'Null', 'Shrinagar')) \
-     .show(truncate= False)
-"""
-
