@@ -2,7 +2,6 @@ import unittest
 from etl.core.utility import *
 
 class SampleTestCases(unittest.TestCase):
-
     def getSparkSession(self):
         self.spark = SparkSession \
             .builder \
@@ -14,6 +13,7 @@ class SampleTestCases(unittest.TestCase):
     """
     Sample test cases start with test_
     """
+
     def test_getMinValue(self):
         emp_schema = ["Employee_ID", "Name", "DOJ", "Dept_Id", "Gender", "salary", "LastDate"]
 
@@ -23,10 +23,10 @@ class SampleTestCases(unittest.TestCase):
                     (40, "Rani Kumari", "2006-04-04", "100", "F", 200000, "2020-01-01"),
                     (50, "Rekha", "2008-05-18", "300", None, 90000, None)
                     ]
-        print("111")
+        # print("111")
         empDF = self.spark.createDataFrame(data=emp_data, schema=emp_schema)
         empDF.printSchema()
-        print("222")
+        # print("222")
         print("Result:", str(getMinSal(empDF, "salary")))
         self.assertEqual(getMinSal(empDF, "salary"), 20000, msg="result and expected output are same")
 
