@@ -31,7 +31,7 @@ Joining above two dataFrames
 """
 # empDF = empDF1.join(empDF2, "Id", "fullouter").orderBy(empDF1.Id)
 print("Joining 2 dataframes")
-empDF = getJoinDF(empDF1, empDF2)
+empDF = getJoinDF(df1= empDF1, df2= empDF2)
 
 empDF.show()
 empDF.printSchema()

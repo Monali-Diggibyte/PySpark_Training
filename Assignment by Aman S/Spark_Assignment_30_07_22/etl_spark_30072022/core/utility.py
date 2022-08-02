@@ -18,8 +18,8 @@ def createDF():
     return result
 """
 
-def getJoinDF(DF1, DF2):
-    result = DF1.join(DF2, "Id", "fullouter").orderBy(DF1.Id)
+def getJoinDF(df1, df2):
+    result = df1.join(df2, "Id", "fullouter").orderBy(df1.Id)
     return result
 
 def getNullCount(df):
