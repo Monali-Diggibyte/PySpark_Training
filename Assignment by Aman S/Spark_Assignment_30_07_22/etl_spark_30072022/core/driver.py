@@ -12,7 +12,6 @@ creating First DataFrame from  Employee_info.csv
 print("Creating First Employee DataFrame:")
 empDF1 = spark.read.format("csv").options(header= True, inferSchema= True, delimiter= ",") \
                    .load("./Data Files/Employee_info.csv")
-spark.read.csv()
 #empDF1 = createDF()
 empDF1.show(20, False)
 empDF1.printSchema()

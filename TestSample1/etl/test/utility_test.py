@@ -25,9 +25,8 @@ class SampleTestCases(unittest.TestCase):
                     ]
         print("111")
         empDF = self.spark.createDataFrame(data=emp_data, schema=emp_schema)
+        empDF.printSchema()
         print("222")
         print("Result:", str(getMinSal(empDF, "salary")))
         self.assertEqual(getMinSal(empDF, "salary"), 20000, msg="result and expected output are same")
 
-if __name__ == '__main__':
-    unittest.main()
