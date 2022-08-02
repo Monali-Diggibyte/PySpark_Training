@@ -37,5 +37,16 @@ class empMeaningfulTestCases(unittest.TestCase):
         empDF = empDF1.join(empDF2, "Id", "fullouter").orderBy(empDF1.Id)
         self.assertEqual(getJoinDF(empDF1, empDF2), empDF, msg = "Both dataframe are same")
 
+    def test_getNullCount(self):
+        result = empDF.select([count(when(col(c).isNull(), c)).alias(c) for c in empDF.columns])
+        self.assertEqual(getNullCount(empDF), result, msg="Null Counts are Same")
+
+    def test_getMeaningfulVal(self):
+        empDF_n = getMeaningfulVal(empDF, 'Department', 'Other Dept')
+        empDF_n = getMeaningfulVal(empDF_n, 'City', 'Shrinagar')
+
+        Null_count = empDF_n.select().where((empDF_n.Department=='Null') | (empDF_n.City=='Null')).count()
+        self.assertEqual(Null_count, 0, msg="No Values for Null")
+
 
 

@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import countDistinct
 from utility import *
 """
 Creating Spark Session
@@ -59,4 +60,15 @@ empDF_n.show(20, False)
 print("Updating Null by Meaningful Value for City:")
 empDF_n = getMeaningfulVal(empDF_n, 'City', 'Shrinagar')
 empDF_n.show(20, False)
+
+"""
+Getting 'Null' value count after Replace
+"""
+dept_count = empDF_n.select().where(empDF_n.Department=='Other Dept').count()
+print("Department Null count: " + str(dept_count))
+city_count = empDF_n.select().where(empDF_n.City=='Shrinagar').count()
+print("City Null count: " + str(city_count))
+
+Null_count = empDF_n.select().where((empDF_n.Department=='Null') | (empDF_n.City=='Null')).count()
+print("Count of Null Values: " + str(Null_count))
 
