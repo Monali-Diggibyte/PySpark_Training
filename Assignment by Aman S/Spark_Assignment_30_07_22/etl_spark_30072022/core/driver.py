@@ -1,18 +1,24 @@
+from pyspark.context import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import countDistinct
 from utility import *
 """
 Creating Spark Session
 """
-spark = getSparkSession("MySparkPractise")
-print(spark)
+spark_session = getSparkSession("MySparkPractise")
+# sc = SparkContext('local[2]')
+# spark = SparkSession(sc)
+print("Spark Session:" + str(spark))
 
 """ 
 creating First DataFrame from  Employee_info.csv
 """
 print("Creating First Employee DataFrame:")
+"""
 empDF1 = spark.read.format("csv").options(header= True, inferSchema= True, delimiter= ",") \
                    .load("./Data Files/Employee_info.csv")
+"""
+empDF1= createDF(fileformat= "csv", filepath= "./Data Files/Employee_info.csv")
 #empDF1 = createDF()
 empDF1.show(20, False)
 empDF1.printSchema()

@@ -1,22 +1,31 @@
-from pyspark.sql import SparkSession
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.functions import col, count, when
 from pyspark.sql.functions import regexp_replace
 
+"""
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+sc = SparkContext('local')
+spark = SparkSession(sc)
+"""
+sc = SparkContext("local[2]")
+spark = SparkSession(sc)
+
+
 def getSparkSession(appname):
-    spark = SparkSession \
+    spark = (SparkSession \
         .builder \
         .appName(appname) \
         .master("local[2]") \
-        .getOrCreate()
+        .getOrCreate())
     return(spark)
 
-"""
-def createDF():
-    result = spark.read.format("csv").options(header=True, inferSchema=True, delimiter=",") \
-                  .load("./Data Files/Employee_info.csv")
+def createDF(fileformat, filepath):
+    result = spark.read.format(fileformat).options(header=True, inferSchema=True, delimiter=",") \
+                       .load(filepath)
     return result
-"""
 
 def getJoinDF(df1, df2):
     result = df1.join(df2, "Id", "fullouter").orderBy(df1.Id)
