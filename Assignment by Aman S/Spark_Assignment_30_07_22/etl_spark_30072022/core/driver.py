@@ -21,7 +21,7 @@ creating Second DataFrame from  Employee_info_1.csv
 """
 print("Creating Second Employee DataFrame:")
 empDF2 = spark.read.format("csv").options(header= True, inferSchema= True, sep= ",") \
-    .load("./Data Files/Employee_info_1.csv")
+              .load("./Data Files/Employee_info_1.csv")
 empDF2.show(20, False)
 empDF2.printSchema()
 

@@ -13,7 +13,7 @@ def getSparkSession(appname):
 
 def createDF():
     result = spark.read.format("csv").options(header=True, inferSchema=True, delimiter=",") \
-        .load("./Data Files/Employee_info.csv")
+                  .load("./Data Files/Employee_info.csv")
     return result
 
 def getJoinDF(DF1, DF2):
