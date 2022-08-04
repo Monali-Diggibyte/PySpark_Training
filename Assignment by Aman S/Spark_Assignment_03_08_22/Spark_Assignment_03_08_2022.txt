@@ -1,0 +1,15 @@
+[18:18] Aman Solanki
+Hi All, Good Day!
+
+Please find the below assignment.
+Create a method to load the given file and method should not be hardcoded it should be generic so we can use it multiple time.
+
+specify custom schema according to data file and use it while data loading.
+
+create save data generic method and use it to save data.use all above in one spark program and save data as a parquet.
+
+File:
+ 
+[username-password-recovery-code.csv]
+(https://diggibyte-my.sharepoint.com/personal/aman_solanki_diggibyte_com/Documents/Microsoft Teams Chat Files/username-password-recovery-code.csv)
+
