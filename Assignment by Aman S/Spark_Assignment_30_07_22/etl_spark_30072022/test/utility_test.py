@@ -11,11 +11,6 @@ class empMeaningfulTestCases(unittest.TestCase):
                      .appName("MySparkPractise") \
                      .master("local[2]") \
                      .getOrCreate())
-    """
-    @classmethod
-    def tearDownClass(cls):
-        cls.spark.stop()
-    """
 
     """
     This is test case Note test case starting from test_  
@@ -47,6 +42,10 @@ class empMeaningfulTestCases(unittest.TestCase):
 
         Null_count = empDF_n.select().where((empDF_n.Department=='Null') | (empDF_n.City=='Null')).count()
         self.assertEqual(Null_count, 0, msg="No Values for Null")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.spark.stop()
 
 
 

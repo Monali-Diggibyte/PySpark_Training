@@ -4,15 +4,8 @@ from pyspark.sql import functions as F
 from pyspark.sql.functions import col, count, when
 from pyspark.sql.functions import regexp_replace
 
-"""
-from pyspark.context import SparkContext
-from pyspark.sql.session import SparkSession
-sc = SparkContext('local')
-spark = SparkSession(sc)
-"""
 sc = SparkContext("local[2]")
 spark = SparkSession(sc)
-
 
 def getSparkSession(appname):
     spark = (SparkSession \

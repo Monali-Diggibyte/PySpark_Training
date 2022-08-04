@@ -19,7 +19,6 @@ empDF1 = spark.read.format("csv").options(header= True, inferSchema= True, delim
                    .load("./Data Files/Employee_info.csv")
 """
 empDF1= createDF(fileformat= "csv", filepath= "./Data Files/Employee_info.csv")
-#empDF1 = createDF()
 empDF1.show(20, False)
 empDF1.printSchema()
 
@@ -27,8 +26,12 @@ empDF1.printSchema()
 creating Second DataFrame from  Employee_info_1.csv
 """
 print("Creating Second Employee DataFrame:")
+"""
 empDF2 = spark.read.format("csv").options(header= True, inferSchema= True, sep= ",") \
               .load("./Data Files/Employee_info_1.csv")
+"""
+
+empDF2= createDF(fileformat= "csv", filepath= "./Data Files/Employee_info_1.csv")
 empDF2.show(20, False)
 empDF2.printSchema()
 
