@@ -1,0 +1,10 @@
+Employee_id,Emp_First_name,Emp_Last_Same,Experience,Salary
+10,M,S.,9,60000
+20,H,K,2,25000
+30,ABC,XYZ,3,30000
+40,AAA,BBB,5,40000
+50,XXX,XYZ,8,50000
+60,abc,,2,
+,F_name,L_Name,,8000
+,,,,
+90,klmo,xyz,7,70000
