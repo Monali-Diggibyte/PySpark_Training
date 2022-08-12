@@ -7,15 +7,17 @@ print('Sparksession:',spark)
 Reading orc file
 """
 print("Reading ORC file")
-orcDF= spark.read.format('orc').load('./Data Files/orc-file-11-format.orc')
+orcDF= spark.read.format('orc').load('./Data Files/orc_format_11.orc')
 orcDF.show(truncate= False)
 orcDF.printSchema()
+print('Shape of retailDF:', orcDF.count(), ' * ', len(orcDF.columns))
 
 """
 Writing orc file
 """
 print("Writing into ORC file")
-orcDF.write.format('orc').save('./Output/orc_file')
+orcDF.write.format('orc').mode('overwrite').save('./Output/orc_file')
 
-spark.read.format('orc').load('./Output/orc_file').show()
-
+DF= spark.read.format('orc').load('./Output/orc_file')
+DF.show()
+print('Shape of retailDF:', DF.count(), ' * ', len(DF.columns))
