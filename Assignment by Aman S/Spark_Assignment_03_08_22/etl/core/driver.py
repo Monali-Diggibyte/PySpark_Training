@@ -26,7 +26,12 @@ userSchema = StructType([StructField("Username", StringType(), True),
 """
 Reading csv File
 """
-userDF= createDF(fileformat= 'csv', schemaName=userSchema, filedelimiter= ';', filepath='./DataFile/username-password-recovery-code.csv')
+p_fileformat= input('Enter File Format:')
+p_filedelimiter= input('Enter File delimiter:')
+p_filepath= './DataFile/' + input('Enter File Name:')
+print('Input parameters for createDF are:',p_fileformat, p_filedelimiter, p_filepath)
+userDF=createDF(fileformat= p_fileformat, schemaName=userSchema, filedelimiter= p_filedelimiter, filepath= p_filepath)
+#'./DataFile/username-password-recovery-code.csv'
 userDF.show(truncate= False)
 userDF.printSchema()
 
@@ -34,13 +39,20 @@ userDF.printSchema()
 Writing into Parquet File
 """
 #userDF.write.mode("overwrite").parquet(r"./Output/user_info_parquet")
+p_writefilemode= input('Enter Write Mode:')
+p_outfilepath= './Output/'+ input('Enter Out File path:')
+print('Input parameters writeToParquet are:',p_writefilemode, p_outfilepath)
 
-writeToParquet(df= userDF, writefilemode= 'overwrite', outfilepath= './Output/user_info_parquet')
-
+#writeToParquet(df= userDF, writefilemode= 'overwrite', outfilepath= './Output/user_info_parquet')
+writeToParquet(df= userDF, writefilemode= p_writefilemode, outfilepath= p_outfilepath)
 """
 Reading Parquet File created by .write
 """
-userDF_parquet = createParquet(fileformat='parquet', filepath='./Output/user_info_parquet')
+p_fileformat = input('Enter File Format:')
+p_filepath= './Output/'+input('Enter Out File path:')
+print('Input parameters createParquet are:',p_fileformat, p_filepath)
+#userDF_parquet = createParquet(fileformat='parquet', filepath='./Output/user_info_parquet')
+userDF_parquet = createParquet(fileformat= p_fileformat, filepath= p_filepath)
 
 """
 userDF_parquet = spark.read.parquet("./Output/user_info_parquet")
